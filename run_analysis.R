@@ -54,11 +54,11 @@ tidyActivityMeasures <- rbind(filteredTestData, filteredTrainData)
 tidyActivityMeasures <- tidyActivityMeasures[order(tidyActivityMeasures$Subject.Id),]
 
 # Write activity measures data frame to file
-write.table(x=tidyActivityMeasures, file="./tidyActivityMeasures.txt", row.names = FALSE, sep=",")
+write.table(x=tidyActivityMeasures, file="./tidyActivityMeasures.txt", row.names = FALSE, sep=" ")
 
 # Compute variable means for each activity and each subject
 activityMelt <- melt(tidyActivityMeasures, id=c("Subject.Id", "Activity"))
 tidyActivityMeans <- dcast(activityMelt, Subject.Id + Activity ~ variable, mean)
 
 # Write means data frame to file
-write.table(x=tidyActivityMeans, file="./tidyActivityMeans.txt", row.names = FALSE, sep=",")
+write.table(x=tidyActivityMeans, file="./tidyActivityMeans.txt", row.names = FALSE, sep=" ")
